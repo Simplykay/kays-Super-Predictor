@@ -38,6 +38,27 @@ if st.button("Calculate Prediction"):
     col2.metric("Draw", f"{draw:.1%}")
     col3.metric(f"{away_team} Win", f"{away_win:.1%}")
     
+import streamlit as st
+import pandas as pd
+
+# ... (inside your 'if st.button' block or just below it) ...
+
+st.divider()
+st.subheader("📊 Recent Form & Head-to-Head")
+
+# Create tabs for better organization
+tab1, tab2 = st.tabs([f"{home_team} Recent", f"{away_team} Recent"])
+
+with tab1:
+    # Filter for games where the selected home team played (either at home or away)
+    home_recent = df[(df['HomeTeam'] == home_team) | (df['AwayTeam'] == home_team)].tail(5)
+    st.dataframe(home_recent[['Date', 'HomeTeam', 'AwayTeam', 'FTHG', 'FTAG']], use_container_width=True)
+
+with tab2:
+    # Filter for games where the selected away team played
+    away_recent = df[(df['HomeTeam'] == away_team) | (df['AwayTeam'] == away_team)].tail(5)
+    st.dataframe(away_recent[['Date', 'HomeTeam', 'AwayTeam', 'FTHG', 'FTAG']], use_container_width=True)
+    
     # Visual Progress Bars
     st.progress(home_win, text="Home Win Probability")
     st.progress(draw, text="Draw Probability")
