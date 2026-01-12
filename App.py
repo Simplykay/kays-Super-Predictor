@@ -87,7 +87,7 @@ def load_predictions():
     try:
         df = pd.read_csv('predictions.csv')
         # Ensure correct types
-        df['Date'] = pd.to_datetime(df['Date']).dt.date
+        df['Date'] = pd.to_datetime(df['Date'])
         return df
     except FileNotFoundError:
         return pd.DataFrame()
@@ -125,6 +125,9 @@ else:
     for index, (col, row) in enumerate(zip(cols, top_picks.iterrows())):
         row_data = row[1]
         with col:
+            # Format date: "Mon 20 May 2024"
+            match_date = row_data['Date'].strftime('%a %d %b %Y')
+            
             st.markdown(f"""
             <div class="pick-card">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
@@ -137,7 +140,10 @@ else:
                 <div style="text-align: center; color: #8b949e; margin: 5px 0;">vs</div>
                 <h3 style="margin: 0; font-size: 1.2em; color: white !important;">{row_data['AwayTeam']}</h3>
                 <div style="margin-top: 15px; display: flex; justify-content: space-between; align-items: flex-end;">
-                    <span style="color: #00ff41; font-weight: bold;">Over 1.5 Goals</span>
+                    <div style="display: flex; flex-direction: column;">
+                        <span style="color: #00ff41; font-weight: bold;">Over 1.5 Goals</span>
+                        <span style="color: #8b949e; font-size: 0.8em;">📅 {match_date}</span>
+                    </div>
                     <span style="color: #8b949e;">🕒 {row_data['Time']}</span>
                 </div>
             </div>

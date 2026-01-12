@@ -1,7 +1,7 @@
 Date,League,HomeTeam,AwayTeam,Time,Over15_Rate_Home,Over15_Rate_Away,Model_Prob
-2024-05-20,Premier League,Manchester City,Arsenal,20:00,0.92,0.88,0.96
-2024-05-20,La Liga,Real Madrid,Barcelona,21:00,0.85,0.82,0.89
-2024-05-20,Serie A,Juventus,AC Milan,19:45,0.70,0.65,0.60
-2024-05-20,Bundesliga,Bayern Munich,Dortmund,18:30,0.95,0.94,0.98
-2024-05-21,Ligue 1,PSG,Lyon,21:00,0.88,0.86,0.91
-2024-05-21,Eredivisie,Ajax,Feyenoord,14:30,0.81,0.80,0.86
+2026-01-12,Premier League,Manchester City,Arsenal,20:00,0.92,0.88,0.96
+2026-01-12,La Liga,Real Madrid,Barcelona,21:00,0.85,0.82,0.89
+2026-01-12,Serie A,Juventus,AC Milan,19:45,0.70,0.65,0.60
+2026-01-12,Bundesliga,Bayern Munich,Dortmund,18:30,0.95,0.94,0.98
+2026-01-13,Ligue 1,PSG,Lyon,21:00,0.88,0.86,0.91
+2026-01-13,Eredivisie,Ajax,Feyenoord,14:30,0.81,0.80,0.86
