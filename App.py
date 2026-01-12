@@ -1,17 +1,154 @@
 import streamlit as st
 import pandas as pd
 from scipy.stats import poisson
+import datetime
 
 # Page configuration
 st.set_page_config(
     page_title="Kay's Super Predictor",
     page_icon="⚽",
-    layout="centered"
+    layout="wide", # Changed to wide for better dashboard view
+    initial_sidebar_state="expanded"
 )
+
+# Custom CSS for Midnight Black & Neon Green Theme
+st.markdown("""
+<style>
+    /* Main Background */
+    .stApp {
+        background-color: #0e1117;
+        color: #e0e0e0;
+    }
+    
+    /* Headings */
+    h1, h2, h3 {
+        color: #00ff41 !important; /* Neon Green */
+        font-family: 'Segoe UI', sans-serif;
+    }
+    
+    /* Cards for Top Picks */
+    .pick-card {
+        background-color: #161b22;
+        border: 1px solid #30363d;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        transition: transform 0.2s;
+    }
+    .pick-card:hover {
+        transform: translateY(-2px);
+        border-color: #00ff41;
+    }
+    
+    /* Metrics */
+    .metric-value {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #00ff41;
+    }
+    
+    /* Buttons */
+    .stButton>button {
+        color: #0e1117;
+        background-color: #00ff41;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+    .stButton>button:hover {
+        background-color: #00cc33;
+        color: #fff;
+    }
+    
+    /* Selectbox */
+    .stSelectbox label {
+        color: #00ff41;
+    }
+    
+    /* Divider */
+    hr {
+        border-color: #30363d;
+    }
+    
+    /* Progress Bar */
+    .stProgress > div > div > div > div {
+        background-color: #00ff41;
+    }
+</style>
+""", unsafe_allow_html=True)
 
 st.title("⚽ Kay's Super Predictor")
 
-# Caching the data load for performance
+# --- Top 3 Picks Dashboard Logic ---
+
+@st.cache_data
+def load_predictions():
+    try:
+        df = pd.read_csv('predictions.csv')
+        # Ensure correct types
+        df['Date'] = pd.to_datetime(df['Date']).dt.date
+        return df
+    except FileNotFoundError:
+        return pd.DataFrame()
+    except Exception as e:
+        st.error(f"Error loading predictions: {e}")
+        return pd.DataFrame()
+
+def get_top_picks(df):
+    if df.empty:
+        return pd.DataFrame()
+    
+    # Filter criteria
+    # 1. Historical Over 1.5 rate > 80% (0.80) for both teams
+    stats_mask = (df['Over15_Rate_Home'] >= 0.80) & (df['Over15_Rate_Away'] >= 0.80)
+    
+    # 2. Model internal probability >= 85% (0.85)
+    prob_mask = df['Model_Prob'] >= 0.85
+    
+    filtered_df = df[stats_mask & prob_mask].copy()
+    
+    # Sort by confidence descending and take top 3
+    top_picks = filtered_df.sort_values(by='Model_Prob', ascending=False).head(3)
+    return top_picks
+
+# Display Dashboard
+st.header("🔥 Daily Top 3 Picks")
+
+picks_df = load_predictions()
+top_picks = get_top_picks(picks_df)
+
+if top_picks.empty:
+    st.info("Refreshing Data... No high-confidence picks available yet for today.")
+else:
+    cols = st.columns(3)
+    for index, (col, row) in enumerate(zip(cols, top_picks.iterrows())):
+        row_data = row[1]
+        with col:
+            st.markdown(f"""
+            <div class="pick-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <span style="color: #8b949e; font-size: 0.9em;">{row_data['League']}</span>
+                    <span style="background-color: rgba(0, 255, 65, 0.1); color: #00ff41; padding: 2px 8px; border-radius: 12px; font-size: 0.8em; border: 1px solid #00ff41;">
+                        {int(row_data['Model_Prob']*100)}% Conf.
+                    </span>
+                </div>
+                <h3 style="margin: 0; font-size: 1.2em; color: white !important;">{row_data['HomeTeam']}</h3>
+                <div style="text-align: center; color: #8b949e; margin: 5px 0;">vs</div>
+                <h3 style="margin: 0; font-size: 1.2em; color: white !important;">{row_data['AwayTeam']}</h3>
+                <div style="margin-top: 15px; display: flex; justify-content: space-between; align-items: flex-end;">
+                    <span style="color: #00ff41; font-weight: bold;">Over 1.5 Goals</span>
+                    <span style="color: #8b949e;">🕒 {row_data['Time']}</span>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+
+
+st.markdown("---")
+st.header("🧮 Match Calculator")
+
+# --- Existing Calculator Logic ---
+
 @st.cache_data
 def load_data():
     try:
@@ -32,99 +169,84 @@ def load_data():
 
 df = load_data()
 
-if df.empty:
-    st.warning("Data not available. Please check the data source.")
-    st.stop()
+if not df.empty:
+    # sort teams for better UX
+    teams = sorted(df['HomeTeam'].unique())
+    
+    # Use columns for layout
+    c1, c2 = st.columns(2)
+    with c1:
+        home_team = st.selectbox("Select Home Team", teams, index=0)
+    
+    # Filter out the selected home team from the away team options
+    away_teams_options = [team for team in teams if team != home_team]
+    
+    with c2:
+        away_team = st.selectbox("Select Away Team", away_teams_options, index=0)
 
-# sort teams for better UX
-teams = sorted(df['HomeTeam'].unique())
+    # Initialize session state for storing predictions
+    if 'prediction_made' not in st.session_state:
+        st.session_state.prediction_made = False
+        st.session_state.home_win_prob = 0.0
+        st.session_state.draw_prob = 0.0
+        st.session_state.away_win_prob = 0.0
+        st.session_state.home_exp = 0.0
+        st.session_state.away_exp = 0.0
 
-col1, col2 = st.columns(2)
-with col1:
-    home_team = st.selectbox("Select Home Team", teams, index=0)
-
-# Filter out the selected home team from the away team options
-away_teams_options = [team for team in teams if team != home_team]
-
-with col2:
-    # Try to select a different team by default if possible
-    away_team = st.selectbox("Select Away Team", away_teams_options, index=0)
-
-# Initialize session state for storing predictions
-if 'prediction_made' not in st.session_state:
-    st.session_state.prediction_made = False
-    st.session_state.home_win_prob = 0.0
-    st.session_state.draw_prob = 0.0
-    st.session_state.away_win_prob = 0.0
-    st.session_state.home_exp = 0.0
-    st.session_state.away_exp = 0.0
-
-if st.button("Calculate Prediction", type="primary"):
-    if home_team == away_team:
-        st.warning("Please select two different teams.")
-    else:
+    if st.button("Calculate Prediction", type="primary"):
         # Calculate goal expectancy
-        # Using a simple average of historical performance against all teams
-        # A more robust model would separate Home stats vs Away stats specifically
         home_exp = df[df['HomeTeam'] == home_team]['FTHG'].mean()
         away_exp = df[df['AwayTeam'] == away_team]['FTAG'].mean()
         
-        # Handle cases where teams might not have data (e.g. new teams)
         if pd.isna(home_exp) or pd.isna(away_exp):
             st.error("Insufficient data to calculate predictions for one or both teams.")
         else:
-            # Calculate Win/Draw/Loss Probabilities using Poisson distribution
+            # Poisson
             home_win_prob, draw_prob, away_win_prob = 0, 0, 0
-            
-            for i in range(10): # Max 9 goals modeled
+            for i in range(10): 
                 for j in range(10):
                     prob = poisson.pmf(i, home_exp) * poisson.pmf(j, away_exp)
                     if i > j: home_win_prob += prob
                     elif i == j: draw_prob += prob
                     else: away_win_prob += prob
             
-            # Update session state
             st.session_state.home_win_prob = home_win_prob
             st.session_state.draw_prob = draw_prob
             st.session_state.away_win_prob = away_win_prob
-            st.session_state.home_exp = home_exp
-            st.session_state.away_exp = away_exp
             st.session_state.prediction_made = True
 
-# Display Prediction Results
-if st.session_state.prediction_made:
+    # Display Prediction Results
+    if st.session_state.prediction_made:
+        st.divider()
+        st.subheader("Match Outcome Probability")
+        
+        m_col1, m_col2, m_col3 = st.columns(3)
+        m_col1.metric(f"{home_team} Win", f"{st.session_state.home_win_prob:.1%}")
+        m_col2.metric("Draw", f"{st.session_state.draw_prob:.1%}")
+        m_col3.metric(f"{away_team} Win", f"{st.session_state.away_win_prob:.1%}")
+        
+        st.caption("Probability Distribution")
+        st.progress(st.session_state.home_win_prob, text=f"{home_team} Win Chance")
+        st.progress(st.session_state.draw_prob, text="Draw Chance")
+        st.progress(st.session_state.away_win_prob, text=f"{away_team} Win Chance")
+
     st.divider()
-    st.subheader("Match Outcome Probability")
-    
-    # Display metrics
-    m_col1, m_col2, m_col3 = st.columns(3)
-    m_col1.metric(f"{home_team} Win", f"{st.session_state.home_win_prob:.1%}")
-    m_col2.metric("Draw", f"{st.session_state.draw_prob:.1%}")
-    m_col3.metric(f"{away_team} Win", f"{st.session_state.away_win_prob:.1%}")
-    
-    # Visual Progress Bars
-    st.caption("Probability Distribution")
-    st.progress(st.session_state.home_win_prob, text=f"{home_team} Win Chance")
-    st.progress(st.session_state.draw_prob, text="Draw Chance")
-    st.progress(st.session_state.away_win_prob, text=f"{away_team} Win Chance")
+    st.subheader("📊 Recent Form")
 
-st.divider()
-st.subheader("📊 Recent Form & Head-to-Head")
+    # Only show tabs if we have data to avoid errors
+    if not df.empty:
+        tab1, tab2 = st.tabs([f"{home_team} Recent", f"{away_team} Recent"])
 
-tab1, tab2 = st.tabs([f"{home_team} Recent Games", f"{away_team} Recent Games"])
+        with tab1:
+            home_recent = df[(df['HomeTeam'] == home_team) | (df['AwayTeam'] == home_team)].tail(5)
+            if not home_recent.empty:
+                st.dataframe(home_recent[['Date', 'HomeTeam', 'AwayTeam', 'FTHG', 'FTAG']], use_container_width=True, hide_index=True)
+            else:
+                st.info("No recent games found.")
 
-with tab1:
-    # Filter for games where the selected home team played
-    home_recent = df[(df['HomeTeam'] == home_team) | (df['AwayTeam'] == home_team)].tail(5)
-    if not home_recent.empty:
-        st.dataframe(home_recent[['Date', 'HomeTeam', 'AwayTeam', 'FTHG', 'FTAG']], use_container_width=True, hide_index=True)
-    else:
-        st.info("No recent games found available.")
-
-with tab2:
-    # Filter for games where the selected away team played
-    away_recent = df[(df['HomeTeam'] == away_team) | (df['AwayTeam'] == away_team)].tail(5)
-    if not away_recent.empty:
-        st.dataframe(away_recent[['Date', 'HomeTeam', 'AwayTeam', 'FTHG', 'FTAG']], use_container_width=True, hide_index=True)
-    else:
-        st.info("No recent games found available.")
+        with tab2:
+            away_recent = df[(df['HomeTeam'] == away_team) | (df['AwayTeam'] == away_team)].tail(5)
+            if not away_recent.empty:
+                st.dataframe(away_recent[['Date', 'HomeTeam', 'AwayTeam', 'FTHG', 'FTAG']], use_container_width=True, hide_index=True)
+            else:
+                st.info("No recent games found.")
