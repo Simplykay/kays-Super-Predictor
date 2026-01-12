@@ -42,10 +42,13 @@ teams = sorted(df['HomeTeam'].unique())
 col1, col2 = st.columns(2)
 with col1:
     home_team = st.selectbox("Select Home Team", teams, index=0)
+
+# Filter out the selected home team from the away team options
+away_teams_options = [team for team in teams if team != home_team]
+
 with col2:
     # Try to select a different team by default if possible
-    default_away_index = 1 if len(teams) > 1 else 0
-    away_team = st.selectbox("Select Away Team", teams, index=default_away_index)
+    away_team = st.selectbox("Select Away Team", away_teams_options, index=0)
 
 # Initialize session state for storing predictions
 if 'prediction_made' not in st.session_state:
