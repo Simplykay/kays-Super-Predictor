@@ -82,7 +82,7 @@ st.title("⚽ Kay's Super Predictor")
 
 # --- Top 3 Picks Dashboard Logic ---
 
-@st.cache_data
+@st.cache_data(ttl=3600)
 def load_predictions():
     try:
         df = pd.read_csv('predictions.csv')
