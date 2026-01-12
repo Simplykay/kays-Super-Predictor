@@ -75,10 +75,26 @@ st.markdown("""
     .stProgress > div > div > div > div {
         background-color: #00ff41;
     }
+    
+    /* Mobile Optimization */
+    @media (max-width: 768px) {
+        .pick-card {
+            margin-bottom: 20px;
+        }
+    }
 </style>
 """, unsafe_allow_html=True)
 
-st.title("⚽ Kay's Super Predictor")
+# Logo and Title Layout
+l_col1, l_col2 = st.columns([1, 4])
+with l_col1:
+    try:
+        st.image("logo.png", width=100)
+    except:
+        st.write("⚽") # Fallback
+with l_col2:
+    st.title("Kay's Super Predictor")
+    st.caption("AI-Powered Over 1.5 Goals Forecasting")
 
 # --- Top 3 Picks Dashboard Logic ---
 
