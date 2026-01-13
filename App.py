@@ -132,10 +132,18 @@ def get_top_picks(df):
 st.header("🔥 Daily Top 3 Picks")
 
 picks_df = load_predictions()
-top_picks = get_top_picks(picks_df)
+
+# Get Today's Date (Simulated as Jan 13 2026 if needed, but using real system time is safer if user is strictly 2026. 
+# However, user wants "new days pick at exactly midnight".
+# We will use pd.Timestamp.now().normalize() for robustness.)
+today = pd.Timestamp.now().normalize()
+
+# Filter for today
+todays_games = picks_df[picks_df['Date'] == today]
+top_picks = get_top_picks(todays_games)
 
 if top_picks.empty:
-    st.info("Refreshing Data... No high-confidence picks available yet for today.")
+    st.info(f"No high-confidence picks available for today ({today.strftime('%d %b %Y')}). Check back later!")
 else:
     cols = st.columns(3)
     for index, (col, row) in enumerate(zip(cols, top_picks.iterrows())):
@@ -165,6 +173,36 @@ else:
             </div>
             """, unsafe_allow_html=True)
 
+
+st.markdown("---")
+# --- Previous Day's Results ---
+st.header("📉 Yesterday's Results")
+yesterday = today - pd.Timedelta(days=1)
+yesterdays_games = picks_df[picks_df['Date'] == yesterday]
+
+if yesterdays_games.empty:
+    st.info(f"No results found for yesterday ({yesterday.strftime('%d %b %Y')}).")
+else:
+    # We display these in a smaller format or a simple table
+    for _, result in yesterdays_games.iterrows():
+        # Check if score exists in CSV
+        h_score = result.get('HomeScore', '-')
+        a_score = result.get('AwayScore', '-')
+        status = "✅" if (h_score != '-' and a_score != '-' and (h_score + a_score) >= 2) else "❌" if (h_score != '-' and a_score != '-') else "⏳"
+        
+        st.markdown(f"""
+        <div style="background-color: #161b22; padding: 10px; border-radius: 8px; margin-bottom: 8px; border-left: 5px solid {'#00ff41' if status == '✅' else '#ff4d4d' if status == '❌' else '#8b949e'};">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="color: #8b949e; font-size: 0.9em;">{result['League']}</span>
+                <span style="font-weight: bold; color: {'#00ff41' if status == '✅' else '#ff4d4d' if status == '❌' else 'white'};">{status} Over 1.5</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 5px;">
+                <span style="font-size: 1.1em; flex: 1; text-align: right; padding-right: 15px;">{result['HomeTeam']}</span>
+                <span style="background-color: #0e1117; padding: 2px 10px; border-radius: 4px; font-weight: bold; font-family: monospace; font-size: 1.2em;">{h_score} - {a_score}</span>
+                <span style="font-size: 1.1em; flex: 1; text-align: left; padding-left: 15px;">{result['AwayTeam']}</span>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
 
 st.markdown("---")
 st.header("🧮 Match Calculator")

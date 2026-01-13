@@ -1,7 +1,10 @@
-Date,League,HomeTeam,AwayTeam,Time,Over15_Rate_Home,Over15_Rate_Away,Model_Prob
-2026-01-12,Italian Serie A,Juventus,Cremonese,19:45,0.85,0.82,0.88
-2026-01-12,English FA Cup,Liverpool,Barnsley,19:45,0.95,0.88,0.97
-2026-01-12,Spanish La Liga,Sevilla,Celta de Vigo,20:00,0.82,0.80,0.86
-2026-01-12,Coupe de France,PSG,Paris FC,20:10,0.92,0.90,0.95
-2026-01-12,Saudi Pro League,Al-Hilal,Al Nassr,17:30,0.98,0.95,0.99
-2026-01-12,Saudi Pro League,Al Ettifaq,Al Khaleej,17:30,0.75,0.70,0.78
+Date,League,HomeTeam,AwayTeam,Time,Over15_Rate_Home,Over15_Rate_Away,Model_Prob,HomeScore,AwayScore
+2026-01-12,Italian Serie A,Juventus,Cremonese,19:45,0.85,0.82,0.88,2,0
+2026-01-12,English FA Cup,Liverpool,Barnsley,19:45,0.95,0.88,0.97,3,1
+2026-01-12,Spanish La Liga,Sevilla,Celta de Vigo,20:00,0.82,0.80,0.86,1,1
+2026-01-12,Coupe de France,PSG,Paris FC,20:10,0.92,0.90,0.95,4,0
+2026-01-12,Saudi Pro League,Al-Hilal,Al Nassr,17:30,0.98,0.95,0.99,2,2
+2026-01-13,Champions League,Real Madrid,Man City,20:00,0.96,0.94,0.98,,-
+2026-01-13,Champions League,Bayern,Arsenal,20:00,0.92,0.89,0.92,,-
+2026-01-13,Premier League,Chelsea,Spurs,19:45,0.88,0.85,0.89,,-
+2026-01-14,La Liga,Barcelona,Atletico,20:00,0.85,0.82,0.87,,-
