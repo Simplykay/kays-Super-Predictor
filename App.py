@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from scipy.stats import poisson
 import datetime
+import os
 
 # Page configuration
 st.set_page_config(
@@ -98,8 +99,8 @@ with l_col2:
 
 # --- Top 3 Picks Dashboard Logic ---
 
-@st.cache_data(ttl=3600)
-def load_predictions():
+@st.cache_data(ttl=300)
+def load_predictions(mtime):
     try:
         df = pd.read_csv('predictions.csv')
         # Ensure correct types
@@ -134,7 +135,13 @@ def get_top_picks(df):
 # Display Dashboard
 st.header("🔥 Daily Top 3 Picks")
 
-picks_df = load_predictions()
+# Get file modification time to force cache refresh when file changes
+try:
+    predictions_mtime = os.path.getmtime('predictions.csv')
+except:
+    predictions_mtime = 0
+
+picks_df = load_predictions(predictions_mtime)
 
 # Get Today's Date (Simulated as Jan 13 2026 if needed, but using real system time is safer if user is strictly 2026. 
 # However, user wants "new days pick at exactly midnight".
