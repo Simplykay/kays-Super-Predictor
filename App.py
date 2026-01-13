@@ -104,6 +104,9 @@ def load_predictions():
         df = pd.read_csv('predictions.csv')
         # Ensure correct types
         df['Date'] = pd.to_datetime(df['Date'])
+        # Ensure Score columns are numeric or handle them as objects
+        df['HomeScore'] = pd.to_numeric(df['HomeScore'], errors='coerce')
+        df['AwayScore'] = pd.to_numeric(df['AwayScore'], errors='coerce')
         return df
     except FileNotFoundError:
         return pd.DataFrame()
@@ -116,11 +119,11 @@ def get_top_picks(df):
         return pd.DataFrame()
     
     # Filter criteria
-    # 1. Historical Over 1.5 rate > 80% (0.80) for both teams
-    stats_mask = (df['Over15_Rate_Home'] >= 0.80) & (df['Over15_Rate_Away'] >= 0.80)
+    # 1. Historical Over 1.5 rate > 70% (0.70) for both teams
+    stats_mask = (df['Over15_Rate_Home'] >= 0.70) & (df['Over15_Rate_Away'] >= 0.70)
     
-    # 2. Model internal probability >= 85% (0.85)
-    prob_mask = df['Model_Prob'] >= 0.85
+    # 2. Model internal probability >= 70% (0.70)
+    prob_mask = df['Model_Prob'] >= 0.70
     
     filtered_df = df[stats_mask & prob_mask].copy()
     
@@ -186,9 +189,15 @@ else:
     # We display these in a smaller format or a simple table
     for _, result in yesterdays_games.iterrows():
         # Check if score exists in CSV
-        h_score = result.get('HomeScore', '-')
-        a_score = result.get('AwayScore', '-')
-        status = "✅" if (h_score != '-' and a_score != '-' and (h_score + a_score) >= 2) else "❌" if (h_score != '-' and a_score != '-') else "⏳"
+        h_score = result.get('HomeScore')
+        a_score = result.get('AwayScore')
+        
+        has_score = not pd.isna(h_score) and not pd.isna(a_score)
+        
+        h_score_disp = int(h_score) if has_score else "-"
+        a_score_disp = int(a_score) if has_score else "-"
+        
+        status = "✅" if (has_score and (h_score + a_score) >= 2) else "❌" if has_score else "⏳"
         
         st.markdown(f"""
         <div style="background-color: #161b22; padding: 10px; border-radius: 8px; margin-bottom: 8px; border-left: 5px solid {'#00ff41' if status == '✅' else '#ff4d4d' if status == '❌' else '#8b949e'};">
@@ -198,7 +207,7 @@ else:
             </div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 5px;">
                 <span style="font-size: 1.1em; flex: 1; text-align: right; padding-right: 15px;">{result['HomeTeam']}</span>
-                <span style="background-color: #0e1117; padding: 2px 10px; border-radius: 4px; font-weight: bold; font-family: monospace; font-size: 1.2em;">{h_score} - {a_score}</span>
+                <span style="background-color: #0e1117; padding: 2px 10px; border-radius: 4px; font-weight: bold; font-family: monospace; font-size: 1.2em;">{h_score_disp} - {a_score_disp}</span>
                 <span style="font-size: 1.1em; flex: 1; text-align: left; padding-left: 15px;">{result['AwayTeam']}</span>
             </div>
         </div>
