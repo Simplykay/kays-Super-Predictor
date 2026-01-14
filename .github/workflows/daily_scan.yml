@@ -34,9 +34,11 @@ jobs:
           if [ -f scraper.py ]; then
             python scraper.py
           else
-            echo "scraper.py not found. Skipping execution."
-            exit 0 # Exit successfully implies no update needed, or use 1 to fail
+            echo "scraper.py not found. Fails."
+            exit 1
           fi
+        env:
+          FOOTBALL_DATA_API_TOKEN: ${{ secrets.FOOTBALL_DATA_API_TOKEN }}
 
       - name: Commit and Push changes
         run: |
