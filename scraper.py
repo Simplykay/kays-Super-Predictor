@@ -70,14 +70,37 @@ def run_scraper():
         print("Error: FOOTBALL_DATA_API_TOKEN not found.")
         return
 
-    all_predictions = []
+    all_data = []
+    
+    # Dates for result fetching
+    today_dt = datetime.now()
+    yesterday_str = (today_dt - timedelta(days=1)).strftime('%Y-%m-%d')
+    tomorrow_plus_2 = (today_dt + timedelta(days=2)).strftime('%Y-%m-%d')
     
     for comp in COMPETITIONS:
         print(f"Processing {comp}...")
         historical = get_historical_data(comp)
-        fixtures = get_fixtures(comp)
         
-        # Limit historical check to last 20 matches per team for better form relevance
+        # 1. Fetch recently finished matches (past 2 days) to show results
+        url_results = f"{BASE_URL}competitions/{comp}/matches?status=FINISHED&dateFrom={yesterday_str}&dateTo={today_dt.strftime('%Y-%m-%d')}"
+        recent_results = make_request(url_results)
+        if recent_results:
+            for match in recent_results.get('matches', []):
+                all_data.append({
+                    'Date': match['utcDate'].split('T')[0],
+                    'League': match['competition']['name'],
+                    'HomeTeam': match['homeTeam']['name'],
+                    'AwayTeam': match['awayTeam']['name'],
+                    'Time': match['utcDate'].split('T')[1][:5],
+                    'Over15_Rate_Home': round(calculate_over15_rate(historical, match['homeTeam']['name']), 2),
+                    'Over15_Rate_Away': round(calculate_over15_rate(historical, match['awayTeam']['name']), 2),
+                    'Model_Prob': 0, # Prob 0 for finished matches
+                    'HomeScore': match['score']['fullTime']['home'],
+                    'AwayScore': match['score']['fullTime']['away']
+                })
+
+        # 2. Fetch scheduled matches
+        fixtures = get_fixtures(comp)
         for fixture in fixtures:
             home_team = fixture['homeTeam']['name']
             away_team = fixture['awayTeam']['name']
@@ -86,16 +109,16 @@ def run_scraper():
             
             # Simple check to only predict for next 3 days
             date_obj = datetime.strptime(match_date, '%Y-%m-%d')
-            if date_obj > datetime.now() + timedelta(days=3):
+            if date_obj > today_dt + timedelta(days=3):
                 continue
                 
             rate_home = calculate_over15_rate(historical, home_team)
             rate_away = calculate_over15_rate(historical, away_team)
             
-            # Combined internal probability (weighted average)
+            # Combined internal probability
             model_prob = (rate_home + rate_away) / 2
             
-            all_predictions.append({
+            all_data.append({
                 'Date': match_date,
                 'League': fixture['competition']['name'],
                 'HomeTeam': home_team,
@@ -104,22 +127,19 @@ def run_scraper():
                 'Over15_Rate_Home': round(rate_home, 2),
                 'Over15_Rate_Away': round(rate_away, 2),
                 'Model_Prob': round(model_prob, 2),
-                'HomeScore': '', # To be filled later
+                'HomeScore': '', 
                 'AwayScore': ''
             })
             
-    # Also fetch results for completed matches in the past 2 days to update predictions.csv
-    # This helps in showing "Yesterday's Results"
-    yesterday = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
-    today = datetime.now().strftime('%Y-%m-%d')
-    
     # Save to CSV
-    df = pd.DataFrame(all_predictions)
-    
-    # If file exists, we could merge, but for now we just overwrite with fresh 3-day data
-    # as per the requirement for automated daily refresh.
-    df.to_csv('predictions.csv', index=False)
-    print(f"Scraper finished. Saved {len(all_predictions)} predictions.")
+    if all_data:
+        df = pd.DataFrame(all_data)
+        # Drop duplicates if any (e.g., if a match transitioned status during run)
+        df = df.drop_duplicates(subset=['Date', 'HomeTeam', 'AwayTeam'])
+        df.to_csv('predictions.csv', index=False)
+        print(f"Scraper finished. Saved {len(all_data)} entries.")
+    else:
+        print("No data fetched.")
 
 if __name__ == "__main__":
     run_scraper()
