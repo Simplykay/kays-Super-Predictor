@@ -119,17 +119,9 @@ def get_top_picks(df):
     if df.empty:
         return pd.DataFrame()
     
-    # Filter criteria
-    # 1. Historical Over 1.5 rate > 70% (0.70) for both teams
-    stats_mask = (df['Over15_Rate_Home'] >= 0.70) & (df['Over15_Rate_Away'] >= 0.70)
-    
-    # 2. Model internal probability >= 70% (0.70)
-    prob_mask = df['Model_Prob'] >= 0.70
-    
-    filtered_df = df[stats_mask & prob_mask].copy()
-    
     # Sort by confidence descending and take top 3
-    top_picks = filtered_df.sort_values(by='Model_Prob', ascending=False).head(3)
+    # We no longer apply a strict 70% filter here to ensure we always have 3 games if data exists
+    top_picks = df.sort_values(by=['Date', 'Model_Prob'], ascending=[True, False]).head(3)
     return top_picks
 
 # Display Dashboard
@@ -143,14 +135,12 @@ except:
 
 picks_df = load_predictions(predictions_mtime)
 
-# Get Today's Date (Simulated as Jan 13 2026 if needed, but using real system time is safer if user is strictly 2026. 
-# However, user wants "new days pick at exactly midnight".
-# We will use pd.Timestamp.now().normalize() for robustness.)
+# Get Today's Date
 today = pd.Timestamp.now().normalize()
 
-# Filter for today
-todays_games = picks_df[picks_df['Date'] == today]
-top_picks = get_top_picks(todays_games)
+# Filter for today and future games to ensure we can always pick 3
+future_games = picks_df[picks_df['Date'] >= today]
+top_picks = get_top_picks(future_games)
 
 if top_picks.empty:
     st.info(f"No high-confidence picks available for today ({today.strftime('%d %b %Y')}). Check back later!")
