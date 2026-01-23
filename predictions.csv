@@ -8,6 +8,7 @@ Date,League,HomeTeam,AwayTeam,Time,Over15_Rate_Home,Over15_Rate_Away,Model_Prob,
 2026-01-25,Premier League,Brentford FC,Nottingham Forest FC,14:00,0.86,0.82,0.84,,
 2026-01-25,Premier League,Newcastle United FC,Aston Villa FC,14:00,0.68,0.68,0.68,,
 2026-01-25,Premier League,Arsenal FC,Manchester United FC,16:30,0.68,0.86,0.77,,
+2026-01-26,Premier League,Everton FC,Leeds United FC,20:00,0.68,0.77,0.73,,
 2026-01-23,Bundesliga,FC St. Pauli 1910,Hamburger SV,19:30,0.82,0.71,0.76,,
 2026-01-24,Bundesliga,1. FC Heidenheim 1846,RB Leipzig,14:30,0.94,0.82,0.88,,
 2026-01-24,Bundesliga,Bayer 04 Leverkusen,SV Werder Bremen,14:30,0.94,0.82,0.88,,
@@ -26,6 +27,7 @@ Date,League,HomeTeam,AwayTeam,Time,Over15_Rate_Home,Over15_Rate_Away,Model_Prob,
 2026-01-25,Primera Division,FC Barcelona,Real Oviedo,15:15,1.0,0.65,0.82,,
 2026-01-25,Primera Division,Real Sociedad de Fútbol,RC Celta de Vigo,17:30,0.8,0.8,0.8,,
 2026-01-25,Primera Division,Deportivo Alavés,Real Betis Balompié,20:00,0.55,0.9,0.73,,
+2026-01-26,Primera Division,Girona FC,Getafe CF,20:00,0.85,0.65,0.75,,
 2026-01-23,Serie A,FC Internazionale Milano,AC Pisa 1909,19:45,0.76,0.62,0.69,,
 2026-01-24,Serie A,Como 1907,Torino FC,14:00,0.71,0.67,0.69,,
 2026-01-24,Serie A,ACF Fiorentina,Cagliari Calcio,17:00,0.76,0.76,0.76,,
@@ -35,6 +37,7 @@ Date,League,HomeTeam,AwayTeam,Time,Over15_Rate_Home,Over15_Rate_Away,Model_Prob,
 2026-01-25,Serie A,Genoa CFC,Bologna FC 1909,14:00,0.76,0.76,0.76,,
 2026-01-25,Serie A,Juventus FC,SSC Napoli,17:00,0.71,0.62,0.67,,
 2026-01-25,Serie A,AS Roma,AC Milan,19:45,0.48,0.67,0.57,,
+2026-01-26,Serie A,Hellas Verona FC,Udinese Calcio,19:45,0.71,0.76,0.74,,
 2026-01-23,Ligue 1,AJ Auxerre,Paris Saint-Germain FC,19:00,0.61,0.72,0.67,,
 2026-01-24,Ligue 1,Stade Rennais FC 1901,FC Lorient,16:00,0.78,0.83,0.81,,
 2026-01-24,Ligue 1,Le Havre AC,AS Monaco FC,18:00,0.56,0.67,0.61,,
@@ -44,12 +47,3 @@ Date,League,HomeTeam,AwayTeam,Time,Over15_Rate_Home,Over15_Rate_Away,Model_Prob,
 2026-01-25,Ligue 1,Paris FC,Angers SCO,16:15,0.78,0.67,0.72,,
 2026-01-25,Ligue 1,Stade Brestois 29,Toulouse FC,16:15,0.78,0.67,0.72,,
 2026-01-25,Ligue 1,Lille OSC,RC Strasbourg Alsace,19:45,0.72,0.67,0.69,,
-2026-01-21,UEFA Champions League,Qarabağ Ağdam FK,Eintracht Frankfurt,17:45,1.0,0.86,0.0,3,2
-2026-01-21,UEFA Champions League,Galatasaray SK,Club Atlético de Madrid,17:45,0.57,1.0,0.0,1,1
-2026-01-21,UEFA Champions League,Olympique de Marseille,Liverpool FC,20:00,0.86,0.57,0.0,0,3
-2026-01-21,UEFA Champions League,SK Slavia Praha,FC Barcelona,20:00,0.71,1.0,0.0,2,4
-2026-01-21,UEFA Champions League,Atalanta BC,Athletic Club,20:00,0.71,0.71,0.0,2,3
-2026-01-21,UEFA Champions League,Juventus FC,Sport Lisboa e Benfica,20:00,0.86,0.71,0.0,2,0
-2026-01-21,UEFA Champions League,Newcastle United FC,PSV,20:00,1.0,1.0,0.0,3,0
-2026-01-21,UEFA Champions League,FC Bayern München,Royale Union Saint-Gilloise,20:00,1.0,0.86,0.0,2,0
-2026-01-21,UEFA Champions League,Chelsea FC,Paphos FC,20:00,0.71,0.43,0.0,1,0
