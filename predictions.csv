@@ -1,10 +1,29 @@
 Date,League,HomeTeam,AwayTeam,Time,Over15_Rate_Home,Over15_Rate_Away,Model_Prob,HomeScore,AwayScore
-2026-02-02,Premier League,Sunderland AFC,Burnley FC,20:00,0.75,0.88,0.0,3,0
 2026-02-06,Premier League,Leeds United FC,Nottingham Forest FC,20:00,0.79,0.83,0.81,,
+2026-02-07,Premier League,Manchester United FC,Tottenham Hotspur FC,12:30,0.88,0.83,0.85,,
+2026-02-07,Premier League,AFC Bournemouth,Aston Villa FC,15:00,0.79,0.67,0.73,,
+2026-02-07,Premier League,Arsenal FC,Sunderland AFC,15:00,0.71,0.75,0.73,,
+2026-02-07,Premier League,Burnley FC,West Ham United FC,15:00,0.88,0.96,0.92,,
+2026-02-07,Premier League,Fulham FC,Everton FC,15:00,0.75,0.71,0.73,,
+2026-02-07,Premier League,Wolverhampton Wanderers FC,Chelsea FC,15:00,0.79,0.88,0.83,,
+2026-02-07,Premier League,Newcastle United FC,Brentford FC,17:30,0.71,0.83,0.77,,
 2026-02-06,Bundesliga,1. FC Union Berlin,Eintracht Frankfurt,19:30,0.75,0.9,0.82,,
-2026-02-02,Primera Division,RCD Mallorca,Sevilla FC,20:00,0.82,0.86,0.0,4,1
+2026-02-07,Bundesliga,VfL Wolfsburg,Borussia Dortmund,14:30,0.8,0.85,0.82,,
+2026-02-07,Bundesliga,SC Freiburg,SV Werder Bremen,14:30,0.85,0.8,0.82,,
+2026-02-07,Bundesliga,FC St. Pauli 1910,VfB Stuttgart,14:30,0.8,0.8,0.8,,
+2026-02-07,Bundesliga,1. FSV Mainz 05,FC Augsburg,14:30,0.75,0.8,0.78,,
+2026-02-07,Bundesliga,1. FC Heidenheim 1846,Hamburger SV,14:30,0.95,0.68,0.82,,
+2026-02-07,Bundesliga,Borussia Mönchengladbach,Bayer 04 Leverkusen,17:30,0.7,0.89,0.8,,
 2026-02-06,Primera Division,RC Celta de Vigo,CA Osasuna,20:00,0.77,0.68,0.73,,
-2026-02-02,Serie A,Udinese Calcio,AS Roma,19:45,0.74,0.48,0.0,1,0
-2026-02-03,Serie A,Bologna FC 1909,AC Milan,19:45,0.77,0.68,0.73,,
+2026-02-07,Primera Division,Rayo Vallecano de Madrid,Real Oviedo,13:00,0.64,0.64,0.64,,
+2026-02-07,Primera Division,FC Barcelona,RCD Mallorca,15:15,1.0,0.82,0.91,,
+2026-02-07,Primera Division,Sevilla FC,Girona FC,17:30,0.86,0.82,0.84,,
+2026-02-07,Primera Division,Real Sociedad de Fútbol,Elche CF,20:00,0.82,0.82,0.82,,
+2026-02-03,Serie A,Bologna FC 1909,AC Milan,19:45,0.78,0.7,0.0,0,3
 2026-02-06,Serie A,Hellas Verona FC,AC Pisa 1909,19:45,0.74,0.65,0.7,,
+2026-02-07,Serie A,Genoa CFC,SSC Napoli,17:00,0.78,0.65,0.72,,
+2026-02-07,Serie A,ACF Fiorentina,Torino FC,19:45,0.78,0.65,0.72,,
 2026-02-06,Ligue 1,FC Metz,Lille OSC,19:45,0.8,0.7,0.75,,
+2026-02-07,Ligue 1,Racing Club de Lens,Stade Rennais FC 1901,16:00,0.75,0.8,0.78,,
+2026-02-07,Ligue 1,Stade Brestois 29,FC Lorient,18:00,0.8,0.85,0.82,,
+2026-02-07,Ligue 1,FC Nantes,Olympique Lyonnais,20:05,0.75,0.55,0.65,,
