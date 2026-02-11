@@ -1,8 +1,8 @@
 Date,League,HomeTeam,AwayTeam,Time,Over15_Rate_Home,Over15_Rate_Away,Model_Prob,HomeScore,AwayScore
-2026-02-10,Premier League,Chelsea FC,Leeds United FC,19:30,0.88,0.8,0.84,,
-2026-02-10,Premier League,Everton FC,AFC Bournemouth,19:30,0.72,0.8,0.76,,
-2026-02-10,Premier League,Tottenham Hotspur FC,Newcastle United FC,19:30,0.84,0.72,0.78,,
-2026-02-10,Premier League,West Ham United FC,Manchester United FC,20:15,0.96,0.88,0.92,,
+2026-02-10,Premier League,Chelsea FC,Leeds United FC,19:30,0.88,0.81,0.0,2,2
+2026-02-10,Premier League,Everton FC,AFC Bournemouth,19:30,0.73,0.81,0.0,1,2
+2026-02-10,Premier League,Tottenham Hotspur FC,Newcastle United FC,19:30,0.85,0.73,0.0,1,2
+2026-02-10,Premier League,West Ham United FC,Manchester United FC,20:15,0.96,0.88,0.0,1,1
 2026-02-11,Premier League,Aston Villa FC,Brighton & Hove Albion FC,19:30,0.68,0.88,0.78,,
 2026-02-11,Premier League,Crystal Palace FC,Burnley FC,19:30,0.68,0.88,0.78,,
 2026-02-11,Premier League,Manchester City FC,Fulham FC,19:30,0.88,0.76,0.82,,
@@ -10,10 +10,23 @@ Date,League,HomeTeam,AwayTeam,Time,Over15_Rate_Home,Over15_Rate_Away,Model_Prob,
 2026-02-11,Premier League,Sunderland AFC,Liverpool FC,20:15,0.76,0.84,0.8,,
 2026-02-12,Premier League,Brentford FC,Arsenal FC,20:00,0.84,0.72,0.78,,
 2026-02-13,Bundesliga,Borussia Dortmund,1. FSV Mainz 05,19:30,0.86,0.76,0.81,,
-2026-02-09,Primera Division,Villarreal CF,RCD Espanyol de Barcelona,20:00,0.95,0.74,0.0,4,1
+2026-02-14,Bundesliga,SV Werder Bremen,FC Bayern München,14:30,0.76,1.0,0.88,,
+2026-02-14,Bundesliga,TSG 1899 Hoffenheim,SC Freiburg,14:30,0.86,0.81,0.83,,
+2026-02-14,Bundesliga,Eintracht Frankfurt,Borussia Mönchengladbach,14:30,0.9,0.71,0.81,,
+2026-02-14,Bundesliga,Hamburger SV,1. FC Union Berlin,14:30,0.7,0.76,0.73,,
+2026-02-14,Bundesliga,Bayer 04 Leverkusen,FC St. Pauli 1910,14:30,0.9,0.81,0.85,,
+2026-02-14,Bundesliga,VfB Stuttgart,1. FC Köln,17:30,0.81,0.76,0.79,,
 2026-02-13,Primera Division,Elche CF,CA Osasuna,20:00,0.83,0.7,0.76,,
-2026-02-09,Serie A,Atalanta BC,US Cremonese,17:30,0.75,0.67,0.0,2,1
-2026-02-09,Serie A,AS Roma,Cagliari Calcio,19:45,0.5,0.79,0.0,2,0
+2026-02-14,Primera Division,RCD Espanyol de Barcelona,RC Celta de Vigo,13:00,0.74,0.78,0.76,,
+2026-02-14,Primera Division,Getafe CF,Villarreal CF,15:15,0.65,0.95,0.8,,
+2026-02-14,Primera Division,Sevilla FC,Deportivo Alavés,17:30,0.87,0.61,0.74,,
+2026-02-14,Primera Division,Real Madrid CF,Real Sociedad de Fútbol,20:00,0.87,0.83,0.85,,
 2026-02-13,Serie A,AC Pisa 1909,AC Milan,19:45,0.62,0.7,0.66,,
+2026-02-14,Serie A,Como 1907,ACF Fiorentina,14:00,0.7,0.79,0.74,,
+2026-02-14,Serie A,SS Lazio,Atalanta BC,17:00,0.58,0.75,0.67,,
+2026-02-14,Serie A,FC Internazionale Milano,Juventus FC,19:45,0.79,0.75,0.77,,
 2026-02-13,Ligue 1,Stade Rennais FC 1901,Paris Saint-Germain FC,18:00,0.81,0.71,0.76,,
 2026-02-13,Ligue 1,AS Monaco FC,FC Nantes,20:05,0.62,0.71,0.67,,
+2026-02-14,Ligue 1,Olympique de Marseille,RC Strasbourg Alsace,16:00,0.71,0.71,0.71,,
+2026-02-14,Ligue 1,Lille OSC,Stade Brestois 29,18:00,0.67,0.81,0.74,,
+2026-02-14,Ligue 1,Paris FC,Racing Club de Lens,20:05,0.71,0.76,0.74,,
