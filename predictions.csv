@@ -45,7 +45,3 @@ Date,League,HomeTeam,AwayTeam,Time,Over15_Rate_Home,Over15_Rate_Away,Model_Prob,
 2026-03-22,Ligue 1,Olympique de Marseille,Lille OSC,16:15,0.69,0.65,0.67,,
 2026-03-22,Ligue 1,Stade Rennais FC 1901,FC Metz,16:15,0.81,0.77,0.79,,
 2026-03-22,Ligue 1,FC Nantes,RC Strasbourg Alsace,19:45,0.68,0.69,0.69,,
-2026-03-18,UEFA Champions League,FC Barcelona,Newcastle United FC,17:45,1.0,1.0,0.0,7,2
-2026-03-18,UEFA Champions League,Liverpool FC,Galatasaray SK,20:00,0.6,0.67,0.0,4,0
-2026-03-18,UEFA Champions League,FC Bayern München,Atalanta BC,20:00,1.0,0.75,0.0,4,1
-2026-03-18,UEFA Champions League,Tottenham Hotspur FC,Club Atlético de Madrid,20:00,0.8,1.0,0.0,3,2
