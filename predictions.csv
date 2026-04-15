@@ -1,12 +1,25 @@
 Date,League,HomeTeam,AwayTeam,Time,Over15_Rate_Home,Over15_Rate_Away,Model_Prob,HomeScore,AwayScore
-2026-04-13,Premier League,Manchester United FC,Leeds United FC,19:00,0.88,0.72,0.0,1,2
+2026-04-18,Premier League,Brentford FC,Fulham FC,11:30,0.81,0.75,0.78,,
+2026-04-18,Premier League,Newcastle United FC,AFC Bournemouth,14:00,0.75,0.75,0.75,,
+2026-04-18,Premier League,Leeds United FC,Wolverhampton Wanderers FC,14:00,0.72,0.78,0.75,,
+2026-04-18,Premier League,Tottenham Hotspur FC,Brighton & Hove Albion FC,16:30,0.84,0.81,0.83,,
+2026-04-18,Premier League,Chelsea FC,Manchester United FC,19:00,0.88,0.88,0.88,,
 2026-04-17,Bundesliga,FC St. Pauli 1910,1. FC Köln,18:30,0.79,0.83,0.81,,
-2026-04-13,Primera Division,Levante UD,Getafe CF,19:00,0.87,0.61,0.0,1,0
-2026-04-13,Serie A,ACF Fiorentina,SS Lazio,18:45,0.72,0.59,0.0,1,0
+2026-04-18,Bundesliga,SV Werder Bremen,Hamburger SV,13:30,0.79,0.76,0.78,,
+2026-04-18,Bundesliga,Bayer 04 Leverkusen,FC Augsburg,13:30,0.83,0.83,0.83,,
+2026-04-18,Bundesliga,TSG 1899 Hoffenheim,Borussia Dortmund,13:30,0.86,0.86,0.86,,
+2026-04-18,Bundesliga,1. FC Union Berlin,VfL Wolfsburg,13:30,0.72,0.83,0.78,,
+2026-04-18,Bundesliga,Eintracht Frankfurt,RB Leipzig,16:30,0.86,0.83,0.84,,
 2026-04-17,Serie A,US Sassuolo Calcio,Como 1907,16:30,0.75,0.75,0.75,,
 2026-04-17,Serie A,FC Internazionale Milano,Cagliari Calcio,18:45,0.81,0.75,0.78,,
+2026-04-18,Serie A,Udinese Calcio,Parma Calcio 1913,13:00,0.72,0.62,0.67,,
+2026-04-18,Serie A,SSC Napoli,SS Lazio,16:00,0.69,0.59,0.64,,
+2026-04-18,Serie A,AS Roma,Atalanta BC,18:45,0.59,0.75,0.67,,
 2026-04-17,Ligue 1,Racing Club de Lens,Toulouse FC,18:45,0.82,0.62,0.72,,
-2026-04-14,UEFA Champions League,Liverpool FC,Paris Saint-Germain FC,19:00,0.64,0.92,0.78,,
-2026-04-14,UEFA Champions League,Club Atlético de Madrid,FC Barcelona,19:00,1.0,1.0,1.0,,
+2026-04-18,Ligue 1,FC Lorient,Olympique de Marseille,15:00,0.86,0.72,0.79,,
+2026-04-18,Ligue 1,Angers SCO,Le Havre AC,17:00,0.59,0.59,0.59,,
+2026-04-18,Ligue 1,Lille OSC,OGC Nice,19:05,0.69,0.79,0.74,,
+2026-04-14,UEFA Champions League,Liverpool FC,Paris Saint-Germain FC,19:00,0.67,0.93,0.0,0,2
+2026-04-14,UEFA Champions League,Club Atlético de Madrid,FC Barcelona,19:00,1.0,1.0,0.0,1,2
 2026-04-15,UEFA Champions League,FC Bayern München,Real Madrid CF,19:00,1.0,0.77,0.88,,
 2026-04-15,UEFA Champions League,Arsenal FC,Sporting Clube de Portugal,19:00,0.91,0.91,0.91,,
