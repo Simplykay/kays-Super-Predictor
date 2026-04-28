@@ -1,22 +1,10 @@
 Date,League,HomeTeam,AwayTeam,Time,Over15_Rate_Home,Over15_Rate_Away,Model_Prob,HomeScore,AwayScore
-2026-04-27,Premier League,Manchester United FC,Brentford FC,19:00,0.85,0.79,0.82,,
-2026-04-26,Bundesliga,VfB Stuttgart,SV Werder Bremen,13:30,0.84,0.81,0.0,1,1
-2026-04-26,Bundesliga,Borussia Dortmund,SC Freiburg,15:30,0.87,0.81,0.0,4,0
-2026-04-26,Primera Division,Rayo Vallecano de Madrid,Real Sociedad de Fútbol,12:00,0.67,0.82,0.0,3,3
-2026-04-26,Primera Division,Real Oviedo,Elche CF,14:15,0.67,0.79,0.0,1,2
-2026-04-26,Primera Division,CA Osasuna,Sevilla FC,16:30,0.67,0.85,0.0,2,1
-2026-04-26,Primera Division,Villarreal CF,RC Celta de Vigo,19:00,0.91,0.82,0.0,2,1
-2026-04-27,Primera Division,RCD Espanyol de Barcelona,Levante UD,19:00,0.75,0.88,0.81,,
-2026-04-26,Serie A,ACF Fiorentina,US Sassuolo Calcio,10:30,0.71,0.74,0.0,0,0
-2026-04-26,Serie A,Genoa CFC,Como 1907,13:00,0.82,0.76,0.0,0,2
-2026-04-26,Serie A,Torino FC,FC Internazionale Milano,16:00,0.71,0.82,0.0,2,2
-2026-04-26,Serie A,AC Milan,Juventus FC,18:45,0.62,0.74,0.0,0,0
-2026-04-27,Serie A,Cagliari Calcio,Atalanta BC,16:30,0.76,0.76,0.76,,
-2026-04-27,Serie A,SS Lazio,Udinese Calcio,18:45,0.61,0.7,0.65,,
-2026-04-26,Ligue 1,FC Lorient,RC Strasbourg Alsace,13:00,0.87,0.73,0.0,2,3
-2026-04-26,Ligue 1,Le Havre AC,FC Metz,15:15,0.61,0.74,0.0,4,4
-2026-04-26,Ligue 1,Paris FC,Lille OSC,15:15,0.71,0.65,0.0,0,1
-2026-04-26,Ligue 1,Stade Rennais FC 1901,FC Nantes,15:15,0.81,0.68,0.0,2,1
-2026-04-26,Ligue 1,Olympique de Marseille,OGC Nice,18:45,0.74,0.77,0.0,1,1
+2026-04-27,Premier League,Manchester United FC,Brentford FC,19:00,0.85,0.79,0.0,2,1
+2026-05-01,Premier League,Leeds United FC,Burnley FC,19:00,0.74,0.85,0.79,,
+2026-04-27,Primera Division,RCD Espanyol de Barcelona,Levante UD,19:00,0.73,0.85,0.0,0,0
+2026-05-01,Primera Division,Girona FC,RCD Mallorca,19:00,0.82,0.85,0.83,,
+2026-04-27,Serie A,Cagliari Calcio,Atalanta BC,16:30,0.76,0.76,0.0,3,2
+2026-04-27,Serie A,SS Lazio,Udinese Calcio,18:45,0.62,0.71,0.0,3,3
+2026-05-01,Serie A,AC Pisa 1909,US Lecce,18:45,0.62,0.62,0.62,,
 2026-04-28,UEFA Champions League,Paris Saint-Germain FC,FC Bayern München,19:00,0.93,1.0,0.96,,
 2026-04-29,UEFA Champions League,Club Atlético de Madrid,Arsenal FC,19:00,1.0,0.83,0.92,,
