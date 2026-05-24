@@ -9,14 +9,15 @@ Date,League,HomeTeam,AwayTeam,Time,Over15_Rate_Home,Over15_Rate_Away,Model_Prob,
 2026-05-24,Premier League,Nottingham Forest FC,AFC Bournemouth,15:00,0.81,0.76,0.78,,
 2026-05-24,Premier League,Tottenham Hotspur FC,Everton FC,15:00,0.84,0.78,0.81,,
 2026-05-24,Premier League,West Ham United FC,Leeds United FC,15:00,0.86,0.73,0.8,,
-2026-05-23,Primera Division,Deportivo Alavés,Rayo Vallecano de Madrid,19:00,0.7,0.7,0.7,,
-2026-05-23,Primera Division,Real Betis Balompié,Levante UD,19:00,0.89,0.86,0.88,,
-2026-05-23,Primera Division,RC Celta de Vigo,Sevilla FC,19:00,0.81,0.81,0.81,,
-2026-05-23,Primera Division,RCD Espanyol de Barcelona,Real Sociedad de Fútbol,19:00,0.76,0.81,0.78,,
-2026-05-23,Primera Division,Getafe CF,CA Osasuna,19:00,0.59,0.7,0.65,,
-2026-05-23,Primera Division,RCD Mallorca,Real Oviedo,19:00,0.84,0.65,0.74,,
-2026-05-23,Primera Division,Real Madrid CF,Athletic Club,19:00,0.86,0.73,0.8,,
-2026-05-23,Primera Division,Valencia CF,FC Barcelona,19:00,0.78,0.89,0.84,,
-2026-05-23,Primera Division,Girona FC,Elche CF,19:00,0.78,0.78,0.78,,
+2026-05-23,Primera Division,Deportivo Alavés,Rayo Vallecano de Madrid,19:00,0.71,0.71,0.0,1,2
+2026-05-23,Primera Division,Real Betis Balompié,Levante UD,19:00,0.89,0.87,0.0,2,1
+2026-05-23,Primera Division,RC Celta de Vigo,Sevilla FC,19:00,0.79,0.79,0.0,1,0
+2026-05-23,Primera Division,RCD Espanyol de Barcelona,Real Sociedad de Fútbol,19:00,0.76,0.82,0.0,1,1
+2026-05-23,Primera Division,Getafe CF,CA Osasuna,19:00,0.58,0.68,0.0,1,0
+2026-05-23,Primera Division,RCD Mallorca,Real Oviedo,19:00,0.84,0.66,0.0,3,0
+2026-05-23,Primera Division,Real Madrid CF,Athletic Club,19:00,0.87,0.74,0.0,4,2
+2026-05-23,Primera Division,Valencia CF,FC Barcelona,19:00,0.79,0.89,0.0,3,1
+2026-05-23,Primera Division,Girona FC,Elche CF,19:00,0.79,0.79,0.0,1,1
 2026-05-24,Primera Division,Villarreal CF,Club Atlético de Madrid,19:00,0.92,0.73,0.82,,
-2026-05-22,Serie A,ACF Fiorentina,Atalanta BC,18:45,0.71,0.74,0.0,1,1
+2026-05-23,Serie A,Bologna FC 1909,FC Internazionale Milano,16:00,0.71,0.84,0.0,3,3
+2026-05-23,Serie A,SS Lazio,AC Pisa 1909,18:45,0.66,0.66,0.0,2,1
