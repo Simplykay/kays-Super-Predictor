@@ -1,19 +1,2 @@
 Date,League,HomeTeam,AwayTeam,Time,Over15_Rate_Home,Over15_Rate_Away,Model_Prob,HomeScore,AwayScore
-2026-05-24,Premier League,Sunderland AFC,Chelsea FC,15:00,0.71,0.87,0,2,1
-2026-05-24,Premier League,Brighton & Hove Albion FC,Manchester United FC,15:00,0.82,0.84,0,0,3
-2026-05-24,Premier League,Crystal Palace FC,Arsenal FC,15:00,0.71,0.71,0,1,2
-2026-05-24,Premier League,Burnley FC,Wolverhampton Wanderers FC,15:00,0.84,0.79,0,1,1
-2026-05-24,Premier League,Fulham FC,Newcastle United FC,15:00,0.71,0.76,0,2,0
-2026-05-24,Premier League,Liverpool FC,Brentford FC,15:00,0.84,0.82,0,1,1
-2026-05-24,Premier League,Manchester City FC,Aston Villa FC,15:00,0.87,0.74,0,1,2
-2026-05-24,Premier League,Nottingham Forest FC,AFC Bournemouth,15:00,0.82,0.76,0,1,1
-2026-05-24,Premier League,Tottenham Hotspur FC,Everton FC,15:00,0.82,0.76,0,1,0
-2026-05-24,Premier League,West Ham United FC,Leeds United FC,15:00,0.87,0.74,0,3,0
-2026-05-24,Primera Division,Villarreal CF,Club Atlético de Madrid,19:00,0.92,0.74,0,5,1
-2026-05-24,Serie A,Parma Calcio 1913,US Sassuolo Calcio,13:00,0.58,0.74,0,1,0
-2026-05-24,Serie A,SSC Napoli,Udinese Calcio,16:00,0.68,0.68,0,1,0
-2026-05-24,Serie A,AC Milan,Cagliari Calcio,18:45,0.66,0.76,0,1,2
-2026-05-24,Serie A,Hellas Verona FC,AS Roma,18:45,0.68,0.66,0,0,2
-2026-05-24,Serie A,US Cremonese,Como 1907,18:45,0.68,0.71,0,1,4
-2026-05-24,Serie A,US Lecce,Genoa CFC,18:45,0.61,0.76,0,1,0
-2026-05-24,Serie A,Torino FC,Juventus FC,19:45,0.74,0.74,0,2,2
+2026-05-30,UEFA Champions League,Paris Saint-Germain FC,Arsenal FC,16:00,0.94,0.79,0.86,,
